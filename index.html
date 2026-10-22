@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitScope | Developer Explorer</title>
+    <link rel="stylesheet" href="./css/style.css" >
+</head>
+
+<body>
+    
+    <header class="header">
+        <a href="#" class="brand">
+        <span class="brand-icon">G</span>
+
+        <span class="brand-text">
+            <span class="brand-name">GitScope</span>
+            <span class="para">A little closer to every developer.</span>
+        </span>
+        </a>
+
+        <button id="theme-toggle" class="theme-toggle" type="button">
+            ☀ Light mode
+        </button>
+    </header>
+
+    <main class="container">
+            <!-- Intro and Search -->
+        <section class="hero">
+            <p class="eyebrow">DEVELOPER EXPLORER</p>
+
+            <h1>Find the person<br>behind the <span>code.</span></h1>
+
+            <p class="hero-text">
+                Explore GitHub profiles, contribution trails,
+                and projects worth discovering.
+            </p>
+
+            <form class="search-bar"  id="search-form">
+                <span class="search-icon">⌕</span>
+                <input
+                    type="text";
+                id="username-input";
+                placeholder="Enter a GitHub Username...";
+                aria-label="GitHub Username";
+                >
+                <button type="submit">Explore ↗</button>
+            </form>
+
+            <p class="search-hint">Ex:Torvalds</p>
+            <p id="status-message" class="status-message" aria-live="polite"></p>
+        </section>
+
+        <!--Results in 2 column layout-->
+        <div class="dashboard" id="results">
+
+      <!-- Left column: profile -->
+        <aside class="profile-card card" id="profile-section">
+
+        <div class="profile-top">
+          <img
+            id="avatar"
+            class="avatar"
+            src="https://github.com/torvalds.png"
+            alt="GitHub profile avatar"
+          >
+
+          <h2 id="name">Developer Name</h2>
+          <p id="username" class="username">@username</p>
+          <p id="bio" class="bio">
+            A little introduction about the developer goes here.
+          </p>
+        </div>
+
+        <div class="profile-stats">
+          <div class="stat">
+            <span class="stat-number" id="followers">540</span>
+            <span class="stat-label">Followers</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-number" id="following">82</span>
+            <span class="stat-label">Following</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-number" id="public-repos">24</span>
+            <span class="stat-label">Repos</span>
+          </div>
+        </div>
+
+        <div class="profile-details">
+          <p id="location">⌖ Location</p>
+          <p id="company">⌘ Company</p>
+        </div>
+
+        <a
+          href="https://github.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          id="profile-link"
+          class="profile-link"
+        >
+          View GitHub Profile ↗
+        </a>
+        </aside>
+
+      <!-- Right column: activity and repositories -->
+      <div class="main-column">
+
+        <!-- Contribution heatmap -->
+        <section class="card contributions-card"
+          id="contributions-section">
+
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">THE BIGGER PICTURE</p>
+              <h2>Contribution trail</h2>
+            </div>
+
+            <span class="period-label">Past year</span>
+          </div>
+
+          <p class="section-description">
+            Every square tells a little story.
+          </p>
+
+          <div class="heatmap-scroll">
+            <div class="heatmap" id="heatmap"></div>
+            <div id="heatmap-tooltip" class="heatmap-tooltip" role="status"></div>
+              <!-- JavaScript will create the daily squares here -->
+          </div>
+
+
+        </section>
+
+          <!-- Repository listing -->
+        <section class="card repositories-card"
+          id="repositories-section">
+
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">MADE BY THEM</p>
+              <h2>Projects & repositories</h2>
+            </div>
+
+            <span id="repo-count" class="repo-count">0 projects</span>
+          </div>
+
+          <div id="repository-list" class="repository-list">
+            <article class="repo-card">
+              <h3>project-name</h3>
+              <p>
+                Your repository description will appear here.
+              </p>
+              <div class="repo-meta">
+                <span>● JavaScript</span>
+                <span>☆ Stars</span>
+              </div>
+            </article>
+          </div>
+
+        </section>
+        
+       </div>
+     </div>
+    </main>
+
+
+
+
+    <footer class="footer">
+        <p>GitScope <span>·</span> Built to explore, made to discover.</p>
+    </footer>
+
+    <script src="index.js"></script>
+
+</body>
+</html>

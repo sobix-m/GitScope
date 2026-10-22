@@ -1,0 +1,832 @@
+/* 1. Colour palette and themes */
+:root {
+  --blue: #272757;
+  --lavender: #8686AC;
+  --muted-blue: #505081;
+  --midnight: #0F0E47;
+
+  /* Dark mode */
+  --bg: var(--midnight);
+  --card: var(--blue);
+  --secondary: var(--muted-blue);
+  --text: #ffffff;
+  --muted-text: var(--lavender);
+  --border: var(--muted-blue);
+  --button-text: #0F0E47;
+}
+
+body.light-mode {
+  --bg: var(--lavender);
+  --card: #ffffff;
+  --secondary: #8686AC;
+  --text: #0F0E47;
+  --muted-text: var(--blue);
+  --border: var(--muted-blue);
+  --button-text: #0F0E47;
+}
+
+/* 2. Basic setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+/* 3. Header */
+
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 28px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: #8686AC;
+    color: #0F0E47;
+    border-radius: 9px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.para {
+    color: var(--muted-text);
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.brand-name {
+    color: var(--text);
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.theme-toggle {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+    cursor: pointer;
+}
+
+
+body.light-mode .brand-icon {
+    background: #272757;
+    color: #ffffff;
+}
+
+body:not(.light-mode) .brand-icon {
+    background: #8686AC;
+    color: #0F0E47;
+}
+
+
+
+/* 4. Main container and introduction */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 28px;
+}
+
+.hero {
+  max-width: 680px;
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  color: var(--lavender);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.hero h1 span {
+  color: var(--lavender);
+}
+
+.hero-text,
+.search-hint,
+.section-description {
+  color: var(--muted-text);
+  font-size: 14px;
+}
+
+/* 5. Search bar */
+.search-bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 7px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.search-icon {
+  color: var(--lavender);
+  padding-left: 8px;
+  font-size: 22px;
+}
+
+.search-bar input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 0;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  outline: none;
+}
+
+.search-bar input::placeholder {
+  color: var(--muted-text);
+}
+
+.search-bar button {
+  padding: 11px 16px;
+  background: var(--lavender);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: var(--text);
+}
+
+.search-hint,
+.status-message {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.status-message {
+  color: var(--muted-text);
+}
+
+/* 6. Main two-column grid */
+.dashboard {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 22px;
+}
+
+.profile-card {
+  position: sticky;
+  top: 20px;
+}
+
+/* 7. Profile section */
+.profile-top {
+  display: grid;
+  justify-items: start;
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--lavender);
+  margin-bottom: 16px;
+}
+
+.profile-top h2 {
+  font-size: 21px;
+  overflow-wrap: anywhere;
+}
+
+.username {
+  color: var(--lavender);
+  font-size: 14px;
+}
+
+.bio {
+  color: var(--muted-text);
+  font-size: 13px;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin: 22px 0;
+}
+
+.stat {
+  display: grid;
+  justify-items: center;
+  padding: 10px 3px;
+  background: var(--secondary);
+  border-radius: 9px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.stat-label {
+  color: var(--text);
+  font-size: 10px;
+}
+
+.profile-details {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  margin-bottom: 18px;
+}
+
+.profile-details p {
+  color: var(--muted-text);
+  font-size: 13px;
+  margin-bottom: 8px;
+  overflow-wrap: anywhere;
+}
+
+.profile-link {
+  display: block;
+  text-align: center;
+  padding: 11px;
+  background: var(--secondary);
+  color: var(--text);
+  border-radius: 9px;
+  font-size: 13px;
+}
+
+.profile-link:hover {
+  background: var(--lavender);
+  color: var(--midnight);
+}
+
+/* 8. Right column */
+.main-column {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-heading h2 {
+  font-size: 19px;
+}
+
+.period-label,
+.repo-count {
+  color: var(--muted-text);
+  font-size: 12px;
+}
+
+.section-description {
+  margin: 10px 0 20px;
+}
+
+/* 9. Contribution heatmap */
+.heatmap-scroll {
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.heatmap {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 12px);
+  grid-auto-columns: 12px;
+  gap: 4px;
+  width: max-content;
+  min-height: 108px;
+}
+
+.heatmap-day {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 3px;
+  background: var(--secondary);
+}
+
+.heatmap-day:hover {
+  outline: 2px solid var(--text);
+}
+
+.heatmap-legend {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  margin-top: 14px;
+  color: var(--muted-text);
+  font-size: 11px;
+}
+
+.level {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+}
+
+.level-0 { background: var(--midnight); }
+.level-1 { background: var(--blue); }
+.level-2 { background: var(--muted-blue); }
+.level-3 { background: var(--lavender); }
+.level-4 { background: var(--text); }
+
+/* 10. Repository cards */
+.repository-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.repo-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  padding: 16px;
+  min-width: 0;
+}
+
+.repo-card:hover {
+  border-color: var(--lavender);
+}
+
+.repo-card h3 {
+  color: var(--lavender);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.repo-card p {
+  color: var(--muted-text);
+  font-size: 12px;
+  margin: 10px 0 16px;
+  overflow-wrap: anywhere;
+}
+
+.repo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--text);
+  font-size: 11px;
+}
+
+/* 11. Footer */
+.footer {
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding: 22px;
+  color: var(--muted-text);
+  font-size: 12px;
+}
+
+/* 12. Theme toggle */
+.theme-toggle {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* 13. Responsive layout */
+@media (max-width: 800px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    position: static;
+  }
+
+  .profile-top {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .profile-details {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 18px 14px;
+  }
+
+  .header-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .container {
+    padding: 28px 14px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .repository-list {
+    grid-template-columns: 1fr;
+  }
+
+  .search-bar {
+    gap: 6px;
+  }
+
+  .search-bar button {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+
+
+.repository-list {
+    display: grid;
+    gap: 12px;
+}
+
+.repository-card {
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--card);
+    overflow-wrap: anywhere;
+}
+
+.repository-title {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.repository-title:hover {
+    text-decoration: underline;
+}
+
+.repository-description {
+    color: var(--muted-text);
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.repository-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--muted-text);
+    font-size: 12px;
+}
+
+
+
+.contribution-summary {
+    color: var(--text);
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.contribution-calendar {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.contribution-week {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.contribution-day {
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    background: var(--border);
+}
+
+.contribution-day[data-level="NONE"] {
+    background: var(--border);
+}
+
+.contribution-day[data-level="FIRST_QUARTILE"] {
+    background: #8686AC;
+}
+
+.contribution-day[data-level="SECOND_QUARTILE"] {
+    background: #6262A0;
+}
+
+.contribution-day[data-level="THIRD_QUARTILE"] {
+    background: #45458A;
+}
+
+.contribution-day[data-level="FOURTH_QUARTILE"] {
+    background: #272757;
+}
+
+body.light-mode .contribution-day[data-level="FOURTH_QUARTILE"] {
+    background: #0F0E47;
+}
+
+
+/* GitScope contribution heatmap */
+
+#heatmap {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+}
+
+#heatmap .contribution-summary {
+    display: block;
+    margin: 0 0 16px;
+    color: var(--text);
+    font-size: 13px;
+}
+
+#heatmap .contribution-calendar {
+    display: flex !important;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4px;
+    width: max-content;
+    min-width: 0;
+    overflow: visible;
+    padding: 4px 2px 12px;
+}
+
+#heatmap .contribution-week {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 4px;
+}
+
+#heatmap .contribution-day {
+    display: block;
+    width: 11px;
+    height: 11px;
+    min-width: 11px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+#heatmap .contribution-day[data-level="NONE"] {
+    background: var(--border);
+}
+
+#heatmap .contribution-day[data-level="FIRST_QUARTILE"] {
+    background: #8686AC;
+}
+
+#heatmap .contribution-day[data-level="SECOND_QUARTILE"] {
+    background: #6262A0;
+}
+
+#heatmap .contribution-day[data-level="THIRD_QUARTILE"] {
+    background: #45458A;
+}
+
+#heatmap .contribution-day[data-level="FOURTH_QUARTILE"] {
+    background: #4545a0;
+}
+
+body.light-mode #heatmap .contribution-day[data-level="FOURTH_QUARTILE"] {
+    background: #0F0E47;
+}
+
+
+
+/* Heatmap labels and layout */
+
+#heatmap .heatmap-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+}
+
+#heatmap .weekday-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-shrink: 0;
+    padding-top: 19px;
+}
+
+#heatmap .weekday-labels span {
+    height: 11px;
+    line-height: 11px;
+    font-size: 9px;
+    color: var(--muted-text);
+}
+
+#heatmap .calendar-area {
+    min-width: 0;
+    flex: 1;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+#heatmap .month-labels {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+#heatmap .month-label {
+    display: block;
+    flex: 0 0 11px;
+    width: 11px;
+    height: 11px;
+    overflow: visible;
+    white-space: nowrap;
+    font-size: 10px;
+    line-height: 11px;
+    color: var(--muted-text);
+}
+
+#heatmap .contribution-calendar {
+    display: flex !important;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4px;
+    width: max-content;
+    overflow: visible;
+}
+
+#heatmap .contribution-week {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+#heatmap .contribution-day.empty-day {
+    visibility: hidden;
+}
+
+
+.heatmap-tooltip {
+    display: none;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 12px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--midnight);
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.heatmap-tooltip.visible {
+    display: block;
+}
+
+.contribution-day {
+    cursor: pointer;
+}
+
+.contribution-day:focus-visible {
+    outline: 2px solid var(--lavender);
+    outline-offset: 2px;
+}
+
+
+/* Contribution intensity legend */
+
+#heatmap .contribution-legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 8px 10px;
+    color: var(--text);
+    font-size: 11px;
+}
+
+#heatmap .legend-levels {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#heatmap .legend-square {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* No contributions */
+#heatmap .legend-square[data-level="0"] {
+    background: #383858;
+    border-color: #77779b;
+}
+
+/* Low contributions */
+#heatmap .legend-square[data-level="1"] {
+    background: #aaaacb;
+}
+
+/* Moderate contributions */
+#heatmap .legend-square[data-level="2"] {
+    background: #8585c4;
+}
+
+/* High contributions */
+#heatmap .legend-square[data-level="3"] {
+    background: #6262b5;
+}
+
+/* Very high contributions */
+#heatmap .legend-square[data-level="4"] {
+    background: #4545a0;
+}
