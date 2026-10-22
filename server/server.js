@@ -5,7 +5,7 @@ const cors= require("cors");
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -106,7 +106,7 @@ app.get("/api/contributions/:username", async function (req, res) {
     }
 });
 
-app.listen(PORT, function () {
-    console.log(`GitScope server running at http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", function () {
+    console.log(`GitScope server running on port  ${PORT}`);
 });
 
