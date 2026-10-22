@@ -172,7 +172,7 @@ async function loadContributions(username) {
 
     try {
         const response = await fetch(
-            `http://localhost:3000/api/contributions/${encodeURIComponent(username)}`
+            `https://gitscope-backend-lzb4.onrender.com/api/contributions/${encodeURIComponent(username)}`
         );
 
         const data = await response.json();
